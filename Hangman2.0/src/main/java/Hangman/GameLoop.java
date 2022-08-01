@@ -162,13 +162,18 @@ public class GameLoop {
         }
 
         int highscore = userManager.getHighestScore();
-        if (currentScore > highscore) {
+
+        if(highscore == -100) {
+            out.println("There was an error receiving the highest score! Unable to tell if you beat the highscore or not!");
+        }
+        else if (currentScore > highscore) {
             out.println("You achieved the new highscore with a score of: " + currentScore);
         } else {
             out.println("You did not achieve a new highscore." +
                     " The current highscore is : " + highscore + "." +
                     " You achieved: " + currentScore);
         }
+
         userManager.addHighscore(currentScore);
 
         out.println("Would you like to play again?");
